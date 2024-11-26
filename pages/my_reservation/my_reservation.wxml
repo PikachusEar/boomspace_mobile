@@ -1,0 +1,53 @@
+<!-- reservations.wxml -->
+<view class="container">
+  <!-- 顶部余额卡片 -->
+  <view class="balance-card">
+    <view class="balance-content">
+      <text class="balance-label">钱包余额</text>
+      <view class="balance-amount">
+        <text class="currency">$</text>
+        <text class="amount">{{wallet_balance}}</text>
+      </view>
+    </view>
+    <view class="balance-actions">
+      <button class="action-button" bindtap="handleRecharge">充值</button>
+    </view>
+  </view>
+
+  <!-- 预约列表区域 -->
+  <view class="reservations-section">
+    <view class="section-header">
+      <text class="section-title">预约记录</text>
+      <text class="section-subtitle">共 {{reservations.length}} 条记录</text>
+    </view>
+
+    <!-- 预约列表 -->
+    <view class="reservations-list" wx:if="{{reservations.length > 0}}">
+      <view class="reservation-card" wx:for="{{reservations}}" wx:key="index">
+        <view class="reservation-header">
+          <view class="court-name">{{item.court_name}}</view>
+          <view class="reservation-status {{item.status}}">{{item.status}}</view>
+        </view>
+        
+        <view class="reservation-details">
+          <view class="detail-item">
+            <text>{{item.date}}</text>
+          </view>
+          <view class="detail-item">
+            <text>{{item.start_time}} - {{item.end_time}}</text>
+          </view>
+        </view>
+
+        <view class="reservation-footer">
+          <text class="booking-time">预订时间：{{item.created_at}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态展示 -->
+    <view class="empty-state" wx:else>
+      <text class="empty-text">暂无预约记录</text>
+      <button class="primary-button" bindtap="goToReservation">立即预约</button>
+    </view>
+  </view>
+</view>

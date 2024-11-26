@@ -1,0 +1,63 @@
+<view class="container">
+  <!-- 广告Swiper -->
+  <view class="swiper-container">
+    <swiper 
+      class="swiper"
+      autoplay="true" 
+      interval="3000" 
+      circular="true" 
+      indicator-dots="true"
+      indicator-color="rgba(255, 255, 255, 0.6)"
+      indicator-active-color="#ffffff">
+      <block wx:for="{{banners}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.image_url}}" mode="aspectFill" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 功能按钮区域 -->
+  <view class="features-section">
+    <view class="buttons-grid">
+      <view class="button-item" bindtap="makeReservation">
+        <view class="button-icon-container">
+          <image src="/images/icons/calendar_check_schedule_icon.png" mode="aspectFit" class="button-icon" />
+        </view>
+        <text class="button-text">场地预约</text>
+      </view>
+      <view class="button-item" bindtap="viewReservations">
+        <view class="button-icon-container">
+          <image src="/images/icons/chart_bar_icon.png" mode="aspectFit" class="button-icon" />
+        </view>
+        <text class="button-text">我的预约</text>
+      </view>
+      <view class="button-item" bindtap="rechargeWallet">
+        <view class="button-icon-container">
+          <image src="/images/icons/user_icon.png" mode="aspectFit" class="button-icon" />
+        </view>
+        <text class="button-text">我的账户</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 新闻区域 -->
+<view class="news-section">
+  <view class="section-header">
+    <text class="section-title">最新资讯</text>
+  </view>
+  <view class="news-container">
+    <block wx:for="{{news}}" wx:key="index">
+      <view class="news-item" bindtap="viewArticle" data-poster="{{item.image_url}}" hover-class="news-item-hover">
+        <view class="news-image-container">
+          <image src="{{item.image_url}}" class="news-image" mode="aspectFill" />
+        </view>
+        <view class="news-content">
+          <text class="news-title">{{item.title}}</text>
+          <text class="news-summary">{{item.description}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+</view>

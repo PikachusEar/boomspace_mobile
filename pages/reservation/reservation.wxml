@@ -1,0 +1,74 @@
+<!-- reservation.wxml -->
+<view class="container">
+  <!-- 顶部标题卡片 -->
+  <view class="header-card">
+    <text class="header-title">场地预约</text>
+    <text class="header-subtitle">请选择场地和时间</text>
+  </view>
+
+  <!-- 预约选项卡片 -->
+  <view class="booking-card">
+    <!-- 场地选择 -->
+    <view class="booking-item">
+      <view class="item-label">
+        <text>场地类型</text>
+      </view>
+      <picker mode="selector" range="{{courtTypes}}" value="{{courtTypeIndex}}" bindchange="onCourtTypeChange">
+        <view class="picker-content">
+          <text>{{selectedCourtType || '请选择场地'}}</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 时间选择 -->
+    <view class="booking-item">
+      <view class="item-label">
+        <text>可用时间</text>
+      </view>
+      <picker mode="selector" range="{{availableTimes}}" value="{{timeIndex}}" bindchange="onTimeChange">
+        <view class="picker-content">
+          <text>{{selectedTime || '请选择时间'}}</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 价格展示 -->
+    <view class="booking-item">
+      <view class="item-label">
+        <text>价格</text>
+      </view>
+      <view class="price-display">
+        <text class="currency">CAD$</text>
+        <text class="amount">{{price || '0.00'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 免责声明卡片 -->
+  <view class="disclaimer-card">
+    <view class="disclaimer-header">
+      <text class="disclaimer-title">预订须知</text>
+    </view>
+    <view class="disclaimer-content">
+      <view class="disclaimer-item">
+        <text class="dot">•</text>
+        <text>请提前15分钟到达场地</text>
+      </view>
+      <view class="disclaimer-item">
+        <text class="dot">•</text>
+        <text>预约成功后将无法退款</text>
+      </view>
+      <view class="disclaimer-item">
+        <text class="dot">•</text>
+        <text>请遵守场地使用规则</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部确认按钮 -->
+  <view class="button-container">
+    <button class="confirm-button" bindtap="confirmReservation">
+      确认预约
+    </button>
+  </view>
+</view>

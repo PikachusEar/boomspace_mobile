@@ -1,0 +1,117 @@
+<view class="container">
+  <!-- 顶部卡片 -->
+  <view class="header-card">
+    <view class="balance-content">
+      <text class="balance-label">钱包余额</text>
+      <view class="balance-amount">
+        <text class="currency">$</text>
+        <text class="amount">{{userInfo.wallet_balance || '0.00'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 个人信息卡片 -->
+  <view class="profile-card">
+    <view class="card-header">
+      <text class="header-title">个人信息</text>
+    </view>
+
+
+    <form bindsubmit="submitForm">
+      <!-- 基本信息部分 -->
+      <view class="form-section">
+        <view class="input-item">
+          <view class="input-label">昵称</view>
+          <input 
+            class="input-field" 
+            type="text" 
+            name="wechat_nickname" 
+            value="{{userInfo.wechat_nickname}}"
+            placeholder="请输入昵称"
+          />
+        </view>
+
+        <view class="input-item">
+          <view class="input-label">邮箱 (必填, 用于缴费验证)</view>
+          <input 
+            class="input-field" 
+            type="text" 
+            name="email" 
+            value="{{userInfo.email}}"
+            placeholder="请输入邮箱"
+          />
+        </view>
+
+        <view class="input-item">
+          <view class="input-label">电话 (必填, 用于缴费验证)</view>
+          <input 
+            class="input-field" 
+            type="text" 
+            name="phone" 
+            value="{{userInfo.phone}}"
+            placeholder="请输入电话"
+          />
+        </view>
+
+        <view class="input-item">
+          <view class="input-label">名</view>
+          <input 
+            class="input-field" 
+            type="text" 
+            name="first_name" 
+            value="{{userInfo.first_name}}"
+            placeholder="请输入名"
+          />
+        </view>
+
+        <view class="input-item">
+          <view class="input-label">姓</view>
+          <input 
+            class="input-field" 
+            type="text" 
+            name="last_name" 
+            value="{{userInfo.last_name}}"
+            placeholder="请输入姓"
+          />
+        </view>
+
+        <view class="input-item">
+          <view class="input-label">性别</view>
+          <picker 
+            mode="selector" 
+            name="genderIndex" 
+            range="{{genders}}" 
+            value="{{userInfo.genderIndex}}"
+            bindchange="onGenderChange"
+          >
+            <view class="picker-content">
+              {{genders[userInfo.genderIndex]}}
+            </view>
+          </picker>
+        </view>
+
+        <view class="input-item">
+          <view class="input-label">出生日期</view>
+          <picker 
+            mode="date" 
+            value="{{birthDate}}" 
+            start="1900-01-01" 
+            end="{{todayDate}}" 
+            bindchange="onBirthDateChange"
+          >
+            <view class="picker-content">
+              {{birthDate || '请选择日期'}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <!-- 提交按钮 -->
+      <view class="button-container">
+        <button class="submit-button" formType="submit">
+          保存修改
+        </button>
+      </view>
+    </form>
+  </view>
+</view>
