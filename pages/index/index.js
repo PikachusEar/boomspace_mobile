@@ -12,7 +12,7 @@ Page({
   fetchData: function() {
     var that = this;
     wx.request({
-      url: 'http://localhost:8000/api/get_images',
+      url: 'https://boomspace.acornyun.com/api/get_images',
       method: 'GET',
       success: function(res) {
         if (res.statusCode === 200) {
