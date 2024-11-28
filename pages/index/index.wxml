@@ -18,7 +18,7 @@
   </view>
 
   <!-- 功能按钮区域 -->
-  <view class="features-section">
+  <view class="features-section" wx:if="{{is_activated}}">
     <view class="buttons-grid">
       <view class="button-item" bindtap="makeReservation">
         <view class="button-icon-container">
@@ -42,22 +42,22 @@
   </view>
 
   <!-- 新闻区域 -->
-<view class="news-section">
-  <view class="section-header">
-    <text class="section-title">最新资讯</text>
-  </view>
-  <view class="news-container">
-    <block wx:for="{{news}}" wx:key="index">
-      <view class="news-item" bindtap="viewArticle" data-poster="{{item.image_url}}" hover-class="news-item-hover">
-        <view class="news-image-container">
-          <image src="{{item.image_url}}" class="news-image" mode="aspectFill" />
+  <view class="news-section">
+    <view class="section-header">
+      <text class="section-title">最新资讯</text>
+    </view>
+    <view class="news-container">
+      <block wx:for="{{news}}" wx:key="index">
+        <view class="news-item" bindtap="viewArticle" data-poster="{{item.image_url}}" hover-class="news-item-hover">
+          <view class="news-image-container">
+            <image src="{{item.image_url}}" class="news-image" mode="aspectFill" />
+          </view>
+          <view class="news-content">
+            <text class="news-title">{{item.title}}</text>
+            <text class="news-summary">{{item.description}}</text>
+          </view>
         </view>
-        <view class="news-content">
-          <text class="news-title">{{item.title}}</text>
-          <text class="news-summary">{{item.description}}</text>
-        </view>
-      </view>
-    </block>
+      </block>
+    </view>
   </view>
-</view>
 </view>
